@@ -4,7 +4,7 @@ console.log(process.argv);
 
 
 let count = 1;
-const ticket =setInterval( () => {
+const ticket = setInterval( () => {
     if(count <= 5){
         console.log(`Count: ${count}`);
         count++;
