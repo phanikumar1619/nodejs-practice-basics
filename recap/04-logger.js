@@ -1,7 +1,6 @@
-const {version, add, subtract, multiply, divide} = require('./03-math')
 
-const result = multiply(5, 5);
-const label = version;
+const log = (label , value) => {
+    console.log(`${label} : ${value}`)
+}
 
-
-console.log(label , result);
+module.exports = { log }
