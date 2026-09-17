@@ -7,13 +7,12 @@
 // console.log(currentos.totalmem())
 // console.log(currentos.freemem())
 
-const { totalmem, uptime, freemem, type, release, hostname, userInfo
-} = require("os");
+const { totalmem, uptime, freemem, type, release, hostname, userInfo} = require("os");
 const currentOS = {
     type: type(),
     release: release(),
     hostname: hostname(),
-    userInfo: userInfo()
+    userInfo: userInfo().username
 };
 console.log(currentOS);
 const seconds = uptime();
