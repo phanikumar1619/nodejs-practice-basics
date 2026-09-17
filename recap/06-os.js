@@ -7,14 +7,26 @@
 // console.log(currentos.totalmem())
 // console.log(currentos.freemem())
 
-const { totalmem , uptime} = require("os");
+const { totalmem, uptime, freemem, type, release, hostname, userInfo
+} = require("os");
+const currentOS = {
+    type: type(),
+    release: release(),
+    hostname: hostname(),
+    userInfo: userInfo()
+};
+console.log(currentOS);
+const seconds = uptime();
 const gb = totalmem()/(1024 * 1024 * 1024);
 console.log(`Total Memory: ${gb.toFixed(1)} GB`);
 
-const days = uptime()/86400;
-const hours = uptime() / (60 * 60);
-console.log(`Uptime: ${days.toFixed(1)} days`);
-console.log(`Uptime: ${hours.toFixed(1)} hours`);
+const days = seconds/86400;
+const hours = seconds / (60 * 60);
+console.log(`days: ${days.toFixed(1)} days`);
+console.log(`hours: ${hours.toFixed(1)} hours`);
 
-const per = (totalmem() - currentos.freemem())/totalmem() * 100;
+const free = freemem()/(1024 * 1024 * 1024);
+console.log(`Free Memory: ${free.toFixed(1)} GB`);
+
+const per = (totalmem() - freemem())/totalmem() * 100;
 console.log(`Memory Usage: ${per.toFixed(1)}%`);
