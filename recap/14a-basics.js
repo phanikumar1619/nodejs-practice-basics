@@ -36,6 +36,10 @@ app.use((req, res) => {
         <a href = "/">back to home</a>`);
 });
 
+app.listen(5000, () => {
+    console.log('Server is listening on port 5000...');
+});
+
 //question: Move app.listen to the top of the file, above the routes. Restart, visit /about. Does it still work? (It does — think about why: registering routes is instant, and requests only arrive later.)
 // yes working perfectly because the app.listen is just starting the server and registering the routes is instant, so it doesn't matter where you place the app.listen in the code. The routes will still be registered and available for requests.
 
