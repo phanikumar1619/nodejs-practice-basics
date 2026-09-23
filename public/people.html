@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/styles.css">
+<h1>People (loaded by the browser)</h1>
+<ul id="list"></ul>
+
+<script>
+    // BROWSER CODE
+    fetch('/api/people')
+        .then(res => res.json())
+        .then(result => {
+            // build <li> items from result.data and put them in #list
+            const list = document.getElementById('list');
+            result.data.forEach(person => {
+                const li = document.createElement('li');
+                li.textContent = `${person.name} - ${person.age} - ${person.city}`;
+                list.appendChild(li);
+            });
+        });
+</script>
+    
