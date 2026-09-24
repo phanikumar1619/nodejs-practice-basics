@@ -15,11 +15,12 @@ app.get('/api/products/feature', (req, res) => {
 app.get('/api/products/:id', (req, res) => {
     const { id } = req.params;
     const product = products.find(p => p.id === Number(id));
+    //console.log('Product found:', product);
+    if (isNaN(Number(id))) {
+        return res.status(400).json({ success: false, msg: `Invalid product id ${id}` });
+    }
     if (!product) {
         return res.status(404).json({ success: false, msg: `No product with id ${id}` });
-    }
-    if(isNaN(Number(id))) {
-        return res.status(400).json({ success: false, msg: `Invalid product id ${id}` });
     }
     res.status(200).json({ success: true, data: product });
 });
